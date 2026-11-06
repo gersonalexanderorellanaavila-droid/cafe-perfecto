@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Café Perfecto | Café de especialidad en Oruro</title>
+  <!-- Día 13 (SEO): esta descripción es la que aparece en Google -->
+  <meta name="description" content="Primera cafetería y tostaduría de especialidad de Oruro. Top 9 Bolivia. Cafés, brunch, hamburguesas, pastelería y coctelería de café.">
+
+  <!-- Día 4: tipografías de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Día 4: colores de la marca (vino y dorado del menú) ===== */
+    :root {
+      --vino: #6E1E2E;
+      --vino-oscuro: #3F0F1A;
+      --dorado: #C8A055;
+      --crema: #F7F2EA;
+      --texto: #2B1D1A;
+      --gris: #6B5F5A;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Lato", sans-serif;
+      color: var(--texto);
+      background: var(--crema);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 { font-family: "Playfair Display", serif; line-height: 1.2; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .contenedor { width: min(1100px, 92%); margin: 0 auto; }
+
+    /* ===== Día 6: cabecera con Flexbox ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--vino-oscuro);
+      color: var(--crema);
+    }
+
+    .barra {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+
+    .logo { font-family: "Playfair Display", serif; font-size: 1.4rem; font-weight: 700; }
+    .logo span { color: var(--dorado); }
+
+    nav { display: flex; gap: 28px; }
+    nav a { font-size: 0.95rem; letter-spacing: 0.5px; transition: color 0.2s; }
+    nav a:hover { color: var(--dorado); }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--dorado);
+      color: var(--crema);
+      font-size: 1.3rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* ===== Portada (hero) ===== */
+    .portada {
+      background: linear-gradient(135deg, var(--vino-oscuro), var(--vino));
+      color: var(--crema);
+      padding: 80px 0;
+    }
+
+    .portada .contenedor {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .portada-texto { flex: 1; }
+
+    .insignia {
+      display: inline-block;
+      border: 1px solid var(--dorado);
+      color: var(--dorado);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .portada h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 16px; }
+    .portada p { font-size: 1.15rem; opacity: 0.9; margin-bottom: 32px; max-width: 520px; }
+
+    .botones { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .boton {
+      display: inline-block;
+      padding: 14px 26px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .boton:hover { transform: translateY(-2px); }
+    .boton-dorado { background: var(--dorado); color: var(--vino-oscuro); }
+    .boton-borde { border: 2px solid var(--crema); }
+
+    .portada img {
+      flex: 1;
+      max-width: 440px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    /* ===== Secciones ===== */
+    section { padding: 80px 0; }
+
+    .titulo-seccion { text-align: center; margin-bottom: 48px; }
+    .titulo-seccion h2 { font-size: 2.4rem; color: var(--vino); }
+    .titulo-seccion p { color: var(--gris); }
+    .titulo-seccion::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--dorado);
+      margin: 16px auto 0;
+    }
+
+    /* ===== Día 7: tarjetas con Grid ===== */
+    .razones {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .razon {
+      background: white;
+      padding: 32px 24px;
+      border-radius: 12px;
+      text-align: center;
+      border-top: 4px solid var(--dorado);
+    }
+    .razon .icono { font-size: 2.2rem; margin-bottom: 12px; }
+    .razon h3 { color: var(--vino); margin-bottom: 8px; }
+    .razon p { color: var(--gris); font-size: 0.95rem; }
+
+    /* ===== Menú ===== */
+    #menu { background: white; }
+
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .filtro {
+      font-family: inherit;
+      font-size: 0.95rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--vino);
+      background: white;
+      color: var(--vino);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .filtro:hover, .filtro.activo { background: var(--vino); color: white; }
+
+    .carta {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .cat {
+      background: var(--crema);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .cat h3 {
+      color: var(--vino);
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+    .cat .nota { color: var(--gris); font-size: 0.85rem; margin-bottom: 14px; }
+
+    .lista { list-style: none; margin-top: 12px; }
+
+    .lista li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px dashed rgba(110, 30, 46, 0.2);
+    }
+    .lista li:last-child { border-bottom: none; }
+
+    .lista small { display: block; color: var(--gris); font-size: 0.85rem; margin-top: 2px; }
+
+    .precio { color: var(--vino); font-weight: 700; white-space: nowrap; }
+
+    /* ===== Ubicación ===== */
+    .ubicacion-caja {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+    .dato {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .dato h3 { color: var(--vino); margin-bottom: 8px; }
+    .pendiente { color: #B5651D; font-style: italic; }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--vino-oscuro);
+      color: var(--crema);
+      text-align: center;
+      padding: 32px 0;
+      font-size: 0.9rem;
+    }
+    footer .logo { margin-bottom: 8px; }
+    footer p { opacity: 0.8; }
+
+    /* ===== Día 13: botón flotante de WhatsApp ===== */
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #25D366;
+      color: white;
+      font-weight: 700;
+      padding: 14px 20px;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      z-index: 20;
+      transition: transform 0.2s;
+    }
+    .whatsapp:hover { transform: scale(1.06); }
+
+    /* ===== Día 8: versión para celular (responsive) ===== */
+    @media (max-width: 760px) {
+      .menu-btn { display: block; }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--vino-oscuro);
+        padding: 8px 4%;
+      }
+      nav.abierto { display: flex; }
+      nav a { padding: 12px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+      .portada { padding: 48px 0; }
+      .portada .contenedor { flex-direction: column; text-align: center; }
+      .portada p { margin-left: auto; margin-right: auto; }
+      .botones { justify-content: center; }
+
+      section { padding: 56px 0; }
+      .carta { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="contenedor barra">
+      <a href="#inicio" class="logo">Perfecto <span>Coffee</span></a>
+      <button class="menu-btn" aria-label="Abrir menú">☰</button>
+      <nav>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#menu">Menú</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Portada -->
+    <div class="portada" id="inicio">
+      <div class="contenedor">
+        <div class="portada-texto">
+          <span class="insignia">★ Top 9 Bolivia</span>
+          <h1>El Café Perfecto</h1>
+          <p>La primera cafetería y tostaduría de especialidad de Oruro. Tostamos nuestro propio café para que cada taza sea perfecta.</p>
+          <div class="botones">
+            <a href="#menu" class="boton boton-dorado">Ver el menú</a>
+            <a href="#ubicacion" class="boton boton-borde">Cómo llegar</a>
+          </div>
+        </div>
+        <img src="tasa de cafe.jpg" alt="Matcha latte con el logo de Perfecto Coffee Lounge">
+      </div>
+    </div>
+
+    <!-- Nosotros -->
+    <section id="nosotros">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <h2>¿Por qué Perfecto?</h2>
+          <p>Café de especialidad, hecho en Oruro</p>
+        </div>
+        <div class="razones">
+          <div class="razon">
+            <div class="icono">☕</div>
+            <h3>Tostaduría propia</h3>
+            <p>Somos la primera tostaduría de especialidad de Oruro. Pregunta por los granos de temporada.</p>
+          </div>
+          <div class="razon">
+            <div class="icono">🏆</div>
+            <h3>Top 9 Bolivia</h3>
+            <p>Reconocidos entre las mejores cafeterías del país.</p>
+          </div>
+          <div class="razon">
+            <div class="icono">💧</div>
+            <h3>Agua para café</h3>
+            <p>Usamos agua con un equilibrio mineral diseñado para realzar aromas y sabor.</p>
+          </div>
+          <div class="razon">
+            <div class="icono">♻️</div>
+            <h3>Filtros reutilizables</h3>
+            <p>Extracciones más precisas y menos papel desechable en cada preparación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menú -->
+    <section id="menu">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <h2>Nuestro menú</h2>
+          <p>Precios en bolivianos (Bs)</p>
+        </div>
+
+        <!-- Día 12: botones para filtrar el menú con JavaScript -->
+        <div class="filtros">
+          <button class="filtro activo" data-filtro="todo">Todo</button>
+          <button class="filtro" data-filtro="cafes">Cafés</button>
+          <button class="filtro" data-filtro="sincafe">Sin café</button>
+          <button class="filtro" data-filtro="frappes">Frappés y smoothies</button>
+          <button class="filtro" data-filtro="comida">Comida</button>
+          <button class="filtro" data-filtro="pasteleria">Pastelería</button>
+          <button class="filtro" data-filtro="cocteles">Coctelería</button>
+        </div>
+
+        <div class="carta">
+
+          <div class="cat" data-cat="cafes">
+            <h3>Cafés calientes</h3>
+            <ul class="lista">
+              <li><span>Espresso</span><span class="precio">14 Bs</span></li>
+              <li><span>Espresso Doble</span><span class="precio">18 Bs</span></li>
+              <li><span>Red Eye</span><span class="precio">20 Bs</span></li>
+              <li><span>Americano</span><span class="precio">17 Bs</span></li>
+              <li><span>Macchiato</span><span class="precio">15 Bs</span></li>
+              <li><span>Cortado</span><span class="precio">17 Bs</span></li>
+              <li><span>Cappuccino</span><span class="precio">21 Bs</span></li>
+              <li><span>Latte</span><span class="precio">23 Bs</span></li>
+              <li><span>Caramel Latte</span><span class="precio">26 Bs</span></li>
+              <li><span>Café Moka</span><span class="precio">26 Bs</span></li>
+              <li><span>Café Moka Cremoso</span><span class="precio">29 Bs</span></li>
+              <li><span>Flat White</span><span class="precio">22 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="cafes">
+            <h3>Cafés fríos</h3>
+            <p class="nota">Leche deslactosada: + 4 Bs</p>
+            <ul class="lista">
+              <li><span>Cappuccino Freddo</span><span class="precio">27 Bs</span></li>
+              <li><span>Shakerato</span><span class="precio">27 Bs</span></li>
+              <li><span>Ice Cappuccino</span><span class="precio">28 Bs</span></li>
+              <li><span>Ice Latte</span><span class="precio">24 Bs</span></li>
+              <li><span>Affogato</span><span class="precio">27 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="cafes">
+            <h3>Filtrados de especialidad</h3>
+            <ul class="lista">
+              <li><span>Geisha Lavado</span><span class="precio">27 Bs</span></li>
+              <li><span>Java Lavado</span><span class="precio">27 Bs</span></li>
+              <li><span>Geisha Natural (Exótico)</span><span class="precio">29 Bs</span></li>
+              <li><span>Pacamara Lavado (Exótico)</span><span class="precio">29 Bs</span></li>
+              <li><span>IPR Lavado (Exótico)</span><span class="precio">29 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="sincafe">
+            <h3>Batidos y jugos de la casa</h3>
+            <ul class="lista">
+              <li><span>Simbiótico</span><span class="precio">30 Bs</span></li>
+              <li><span>Juventud</span><span class="precio">25 Bs</span></li>
+              <li><span>Cero Estrés</span><span class="precio">30 Bs</span></li>
+              <li><span>Antioxidante</span><span class="precio">30 Bs</span></li>
+              <li><span>Piel Sana</span><span class="precio">32 Bs</span></li>
+              <li><span>Adelgazante</span><span class="precio">25 Bs</span></li>
+              <li><span>Jugos con agua</span><span class="precio">20 Bs</span></li>
+              <li><span>Jugos con leche</span><span class="precio">25 Bs</span></li>
+              <li><span>Jugos con hierbabuena</span><span class="precio">25 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="sincafe">
+            <h3>Especiales sin café</h3>
+            <ul class="lista">
+              <li><span>Matcha Latte</span><span class="precio">28 Bs</span></li>
+              <li><span>Latte Chocolate</span><span class="precio">22 Bs</span></li>
+              <li><span>Latte Chocolate Cremoso</span><span class="precio">28 Bs</span></li>
+              <li><span>Submarino Orureño</span><span class="precio">28 Bs</span></li>
+              <li><span>Chai Latte</span><span class="precio">25 Bs</span></li>
+              <li><span>Té de Sultana</span><span class="precio">17 Bs</span></li>
+              <li><span>Tés de Infusiones</span><span class="precio">21 Bs</span></li>
+              <li><span>Té o Mate (bolsita)</span><span class="precio">10 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="frappes">
+            <h3>Frappés</h3>
+            <ul class="lista">
+              <li><span>Perfecto Frappé</span><span class="precio">26 – 30 Bs</span></li>
+              <li><span>Cappuccino Frappé</span><span class="precio">26 – 30 Bs</span></li>
+              <li><span>Moka Frappé</span><span class="precio">26 – 30 Bs</span></li>
+              <li><span>Caramelo Frappé</span><span class="precio">26 – 30 Bs</span></li>
+              <li><span>Oreo Frappé</span><span class="precio">26 – 30 Bs</span></li>
+              <li><span>Baileys Frappé</span><span class="precio">30 – 40 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="frappes">
+            <h3>Smoothies</h3>
+            <ul class="lista">
+              <li><span>Chocolate y Frutos Rojos</span><span class="precio">35 Bs</span></li>
+              <li><span>Berries con Chía</span><span class="precio">35 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="comida">
+            <h3>Brunch</h3>
+            <p class="nota">Desayunos para disfrutar a cualquier hora</p>
+            <ul class="lista">
+              <li><span>Tostadas con palta y huevo</span><span class="precio">28 Bs</span></li>
+              <li><span>Tostadas con huevos escalfados y jamón</span><span class="precio">32 Bs</span></li>
+              <li><span>Tostada con charque y huevo</span><span class="precio">48 Bs</span></li>
+              <li><span>Tostada con huevos revueltos, tocino y jamón</span><span class="precio">39 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="comida">
+            <h3>Platos de la casa</h3>
+            <ul class="lista">
+              <li><span>Lomo al Grill<small>Lomo de res de 250 g al grill, con yuca frita y ensalada de palta, brócoli, tomate y maíz.</small></span><span class="precio">65 Bs</span></li>
+              <li><span>Steak de res “Perfecto”<small>En cremosa salsa de carne, con tostada y ensalada de maíz, queso y tomate.</small></span><span class="precio">65 Bs</span></li>
+              <li><span>Shakshuka<small>Huevos escalfados en salsa de tomate, pimientos y cebolla, en sartén de hierro.</small></span><span class="precio">42 Bs</span></li>
+              <li><span>Piqueo papa con queso</span><span class="precio">30 Bs</span></li>
+              <li><span>Porción de papa</span><span class="precio">18 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="comida">
+            <h3>Hamburguesas</h3>
+            <p class="nota">Recetas únicas con 120 g de carne</p>
+            <ul class="lista">
+              <li><span>Clásica americana<small>Cheddar, cebolla caramelizada, tocino, pepinillos y papas fritas.</small></span><span class="precio">47 Bs</span></li>
+              <li><span>De pollo crocante<small>Pollo crocante, cheddar, tocino, pepinillos y papas fritas.</small></span><span class="precio">45 Bs</span></li>
+              <li><span>Diablo (picante ligero)<small>Carne especiada, salsa de especias, cheddar y tocino.</small></span><span class="precio">45 Bs</span></li>
+              <li><span>Champ (champiñones)<small>Compota de champiñones, vegetales rehogados y salsa bacon.</small></span><span class="precio">45 Bs</span></li>
+              <li><span>Whisky (marinada)<small>Carne marinada en whisky, cheddar, morrón y vegetales flambeados.</small></span><span class="precio">45 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="comida">
+            <h3>Sándwiches</h3>
+            <ul class="lista">
+              <li><span>Pollo a la plancha<small>Cebolla caramelizada, tocino y salsa ahumada secreta, en pan panini.</small></span><span class="precio">43 Bs</span></li>
+              <li><span>Lomito de res a la plancha<small>Queso americano y cebolla caramelizada, en pan panini.</small></span><span class="precio">48 Bs</span></li>
+              <li><span>Charque “Perfecto”<small>Charque frito, cebolla caramelizada, palta y salsa de ajo.</small></span><span class="precio">48 Bs</span></li>
+              <li><span>Vegetariano<small>Queso criollo, palta, palmito, alfalfa y mostaza, en pan integral.</small></span><span class="precio">25 Bs</span></li>
+              <li><span>Croque Monsieur<small>Jamón, mozzarella, bechamel y queso gratinado.</small></span><span class="precio">23 Bs</span></li>
+              <li><span>Croque Madame<small>Jamón, mozzarella, huevo, bechamel y queso gratinado.</small></span><span class="precio">25 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="pasteleria">
+            <h3>Pastelería</h3>
+            <p class="nota">Dulces y salados</p>
+            <ul class="lista">
+              <li><span>Torta individual</span><span class="precio">45 Bs</span></li>
+              <li><span>Alfajor</span><span class="precio">4 Bs</span></li>
+              <li><span>Croissant</span><span class="precio">12 Bs</span></li>
+              <li><span>Croissant de jamón y queso</span><span class="precio">15 Bs</span></li>
+              <li><span>Empanada de queso</span><span class="precio">9 Bs</span></li>
+              <li><span>Brownie</span><span class="precio">15 Bs</span></li>
+              <li><span>Queque de zanahoria</span><span class="precio">12 Bs</span></li>
+              <li><span>Tres leches tradicional</span><span class="precio">15 Bs</span></li>
+              <li><span>Tres leches moka</span><span class="precio">20 Bs</span></li>
+              <li><span>Tiramisú</span><span class="precio">15 Bs</span></li>
+              <li><span>Pie de limón</span><span class="precio">17 Bs</span></li>
+              <li><span>Queque de limón</span><span class="precio">12 Bs</span></li>
+            </ul>
+          </div>
+
+          <div class="cat" data-cat="cocteles">
+            <h3>Coctelería de café</h3>
+            <ul class="lista">
+              <li><span>Espresso Martini</span><span class="precio">38 Bs</span></li>
+              <li><span>Affogato “El Padrino”</span><span class="precio">40 Bs</span></li>
+              <li><span>Café 3 de Julio</span><span class="precio">38 Bs</span></li>
+              <li><span>La Fruta Prohibida</span><span class="precio">38 Bs</span></li>
+              <li><span>Mantilla de Vicuña</span><span class="precio">38 Bs</span></li>
+              <li><span>Café del Moreno</span><span class="precio">40 Bs</span></li>
+              <li><span>Café Perfecto</span><span class="precio">38 Bs</span></li>
+              <li><span>Café Imperial (2 personas)</span><span class="precio">80 Bs</span></li>
+              <li><span>Café Irlandés</span><span class="precio">35 Bs</span></li>
+              <li><span>V60 Whisky</span><span class="precio">37 Bs</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Ubicación -->
+    <section id="ubicacion">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <h2>Visítanos</h2>
+          <p>Te esperamos en Oruro</p>
+        </div>
+        <div class="ubicacion-caja">
+          <div class="dato">
+            <h3>📍 Dirección</h3>
+            <p class="pendiente">(Pendiente: dirección del café)</p>
+            <p style="margin-top:12px"><a class="boton boton-dorado" href="PEGA-AQUI-TU-LINK-DE-MAPS" target="_blank">Abrir en Google Maps</a></p>
+          </div>
+          <div class="dato">
+            <h3>🕒 Horario</h3>
+            <p class="pendiente">(Pendiente: días y horas de atención)</p>
+          </div>
+          <div class="dato">
+            <h3>📱 Redes</h3>
+            <p class="pendiente">(Pendiente: Instagram, Facebook, TikTok)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="logo">Perfecto <span style="color: var(--dorado)">Coffee Lounge</span></div>
+    <p>© 2026 El Café Perfecto · Oruro, Bolivia</p>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp: cambia 591XXXXXXXX por el número real -->
+  <a class="whatsapp" href="https://wa.me/591XXXXXXXX" target="_blank">💬 WhatsApp</a>
+
+  <!-- ===== Días 11 y 12: JavaScript ===== -->
+  <script>
+    // Menú hamburguesa para celular
+    const botonMenu = document.querySelector(".menu-btn");
+    const nav = document.querySelector("nav");
+    botonMenu.addEventListener("click", () => nav.classList.toggle("abierto"));
+    nav.querySelectorAll("a").forEach(enlace =>
+      enlace.addEventListener("click", () => nav.classList.remove("abierto"))
+    );
+
+    // Filtro del menú por categorías
+    const filtros = document.querySelectorAll(".filtro");
+    const categorias = document.querySelectorAll(".cat");
+    filtros.forEach(boton => {
+      boton.addEventListener("click", () => {
+        filtros.forEach(b => b.classList.remove("activo"));
+        boton.classList.add("activo");
+        const elegido = boton.dataset.filtro;
+        categorias.forEach(cat => {
+          cat.hidden = elegido !== "todo" && cat.dataset.cat !== elegido;
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
